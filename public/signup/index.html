@@ -1,3 +1,74 @@
-<iframe src="www.google.com"></iframe>
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<base href="/">
 
-<a href="/">Back to home</a>
+	<title>MST - Internal Appcenter Application</title>
+
+	<!-- CSS -->
+	<base href="/">
+	<link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
+	<!-- Custom CSS -->
+    <link href="css/sb-admin.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css"> <!-- custom styles -->
+    <link href="css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+	
+</head>
+<body id="mainWrapper" ng-app="sampleApp" ng-controller="MainController">
+<div class="container">
+	
+	<!-- HEADER -->
+	    <div ng-include src="'views/header.html'"></div>
+
+	
+	<div class="page-header">
+		<h1>Student Registration</h1>
+	</div>	
+	
+	<form class="form-horizontal" action="https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">				
+		<input type=hidden name="oid" value="00D28000001do4l">
+		<input type=hidden name="retURL" value="https://mstherokudemo-dev.herokuapp.com/thanks/">
+		
+		 <div class="row">
+			<div class="form-group col-md-4">
+				<label for="first_name">First Name:</label>
+				<input type="text" class="form-control" id="first_name" placeholder="First Name">
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-md-4">
+				<label for="last_name">Last Name:</label>
+				<input type="text" class="form-control" id="last_name" placeholder="Last Name">
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-md-4">
+				<label for="email">Email:</label>
+				<input type="text" class="form-control" id="email" placeholder="Last Name">
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-md-4">
+				<label for="company">Company</label>
+				<input type="text" class="form-control" id="company" placeholder="Company">
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-12">
+				<br />
+				<button class="btn btn-primary">submit</button>
+			</div>
+		</div>
+	</form>
+
+</div>
+  <!-- jQuery -->
+    
+	
+	<!-- JS -->
+	
+</body>
+</html>
