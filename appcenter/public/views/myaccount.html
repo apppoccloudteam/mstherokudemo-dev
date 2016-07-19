@@ -1,0 +1,45 @@
+<div class="row">
+	<div class="col-md-6">
+		<img src="images/logo.png" class="logo" />
+	</div>
+	<div class="col-md-6">
+		<strong class="pull-right" style="line-height:75px; font-size:25px;">Your application</strong>
+	</div>
+ </div>
+ 
+ <div class="page-header">
+	<h1>{{message}}</h1>
+
+</div>
+  <form ng-init="getUserInfo()">
+	<div class="row">
+		<div class="form-group col-md-4">
+			<label for="firstName">First Name:</label>
+			<input type="text" class="form-control" id="firstName"  ng-model="userInfo[0].firstname"  placeholder="First Name">
+		</div>
+	</div>
+	<div class="row">
+		<div class="form-group col-md-4">
+			<label for="firstName">Last Name:</label>
+			<input type="text" class="form-control"  ng-model="userInfo[0].lastname"  placeholder="Last Name">
+		</div>
+	</div>
+	<div class="row">
+		<div class="form-group col-md-4">
+			<label for="firstName">Company</label>
+			<input type="text" class="form-control"  ng-model="userInfo[0].company"  placeholder="Company">
+		</div>
+	</div>
+	<div class="row">
+		<div class="form-group col-md-4">
+			<label for="firstName">Company</label>
+			<input type="text" class="form-control"  ng-model="userInfo[0].phone"  placeholder="Phone">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<br />
+			<button class="btn btn-primary" disabled>Save and Continue</button>
+		</div>
+	</div>
+</form>

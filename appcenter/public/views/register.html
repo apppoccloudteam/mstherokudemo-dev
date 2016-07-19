@@ -1,0 +1,97 @@
+	 <div class="row">
+		<div class="col-md-6">
+			<img src="images/logo.png" class="logo" />
+		</div>
+		<div class="col-md-6">
+			<strong class="pull-right" style="line-height:75px; font-size:25px;">Your application</strong>
+		</div>
+	 </div>
+	 <div class="page-header">
+		<h1>Create Account</h1>
+	 </div>
+	 <div class="well">			
+		<p>
+			Once you are registered you can save your application and come back at anytime. We will not sell your information.
+		</p>
+		<p><strong>If you already have an account, <a href="/login">sign in.</a></strong></p>
+	</div>
+	<form class="form-horizontal" name="studentRegisterForm" ng-init="getUserInfoDetails()" role="form" ng-submit="submitForm(studentRegisterForm.$valid)" novalidate>	
+	 <div class="row">
+		<div class="form-group col-md-4">
+			<label for="firstName">First Name:</label>
+			<input type="text" class="form-control" readonly ng-model="r_userData.firstname" id="firstName" placeholder="First Name">
+		</div>
+	</div>
+	<div class="row">
+		<div class="form-group col-md-4">
+			<label for="lastName">Last Name:</label>
+			<input type="text" class="form-control"  readonly ng-model="r_userData.lastname" id="lastName" placeholder="Last Name">
+		</div>
+	</div>		
+	<div class="row">
+		<div class="form-group col-md-4">
+			<label for="Email">Email Address:</label>
+			<input type="text" class="form-control" readonly ng-model="r_userData.email" id="Email" placeholder="Email">
+		</div>
+	</div>
+	<div class="row">			
+		<div class="col-md-12">					
+			<div class="form-group col-md-4" style="padding-left: 0px;">
+				<label for="phoneType">Phone Type</label>
+				<select class="form-control" id="phoneType" ng-model="r_userData.phoneType">
+					<option>-Select Phone Type-</option>
+					<option>Home</option>
+					<option>Business</option>
+					<option>Mobile</option>
+				</select>
+			</div>
+			<div class="form-group col-md-4">
+				<label for="countryCode">Country Code</label>
+				<select class="form-control" id="countryCode" ng-model="r_userData.countryCode">
+					<option>-Select Country Code-</option>
+					<option>United States (+91)</option>
+					<option>India (+1)</option>
+				</select>
+			</div>
+			<div class="form-group col-md-4">
+				<label for="phoneNumber">Phone Number</label>
+				<input type="text" class="form-control" ng-model="r_userData.phone" id="phoneNumber" placeholder="Phone Number">
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="form-group col-md-4">
+			<label for="userName">User Name:</label>
+			<input type="text" class="form-control" ng-model="r_userData.userName" id="userName" placeholder="Username">
+		</div>
+	</div>
+	<div class="row">
+		<div class="form-group col-md-4">
+			<label for="userName">Password:</label>
+			<input type="password" class="form-control" ng-model="r_userData.password" id="password" placeholder="passoword">
+		</div>
+	</div>
+	<div class="row">
+		<div class="form-group col-md-4">
+			<label for="userName">Re-enter Password:</label>
+			<input type="password" class="form-control" ng-model="r_userData.confirmpassword" id="confirmpassword" placeholder="Confirm Password">
+		</div>
+	</div>
+	<div class="row">
+		<div class="checkbox col-md-12">
+			<label>
+				<input type="checkbox"> By checking this box you are giving your express written consent for University of Phoenix to contact you regarding our educational programs and services using telephone or text - including our use of automated technology for calls and periodic texts to any wireless number you provide. Message and data rates may apply. This consent is not required to purchase goods or services.
+			</label>
+		</div>
+	</div>
+	<div class="row">
+		<br />
+		<p class="col-md-12"><strong>I agree to the University of Phoenix <a href="">Privacy Policy</a> and <a href="">Terms of Use.</a><strong></p>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<br />
+			<button class="btn btn-primary">Start Your Application</button>
+		</div>
+	</div>
+	</form>
