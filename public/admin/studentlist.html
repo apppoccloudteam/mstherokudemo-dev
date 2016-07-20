@@ -1,0 +1,193 @@
+<div id="page-wrapper" ng-init="dogetStudentList()">
+	<div class="container-fluid">
+		<!-- Page Heading -->
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">
+					{{pageHeader}}
+				</h1>
+				<ol class="breadcrumb">
+					<li>
+						<i class="fa fa-dashboard"></i> <a href="/dashboard">Dashboard</a>
+					</li>
+					<li class="active">
+						<i class="fa fa-table"></i> Student Management
+					</li>
+				</ol>
+			</div>
+		</div>
+		
+		<div class="row" ng-if="successMsg">
+			<div class="col-xs-12">
+				<div class="alert alert-success">
+					<strong>Success!</strong> {{successMsg}}
+				</div>
+			</div>
+		</div>
+
+		
+		<!-- Trigger the modal with a button -->
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="text-right">
+					<button type="button" class="btn btn-primary" ng-click="dogetStudentList()" data-toggle="modal">Active List</button>
+					<button type="button" class="btn btn-primary" ng-click="doGetpendingList()" data-toggle="modal" data-target="#myModal1">Pending List</button>
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add Student</button>
+				</div>
+			</div>
+		</div> <br />
+		
+		<div class="table-responsive" ng-if="studentList.length > 1">
+					<table class="table table-bordered table-hover table-striped">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>First Name</th>
+								<th>Last Name</th>
+								<th>Company Name</th>
+								<th>Email</th>
+								<th>Phone</th>
+								<th ng-if="showList == 'active' ">SFID</th>
+								<th>Status</th>
+								<th ng-if="showList == 'pending'" class="text-center">Sync</th>
+
+							</tr>
+						</thead>
+						<tbody>
+							<tr  class="$index % 2 == 0? 'active' : 'success'" ng-repeat="student in studentList">
+								 <td>{{student.user_id}}</td>
+								 <td>{{student.firstname}}</td>
+								 <td>{{student.lastname}}</td>
+								 <td>{{student.company}}</td>
+								 <td>{{student.email}}</td>
+								 <td>{{student.phone}}</td>
+								 <td  ng-if="showList == 'active' ">{{student.sfid}}</td>
+								 <td ng-if="student.is_active == '1' ">Active</td>
+
+								 <td ng-if="student.is_active == '0' ">Pending</td>
+								 <td ng-if="student.is_active == '0' " align="center">  <span style="cursor:pointer;color:#337ab7" ng-click="updateStudentInfo(student.lead_id)" class="glyphicon glyphicon-refresh"></span></td>
+							</tr>
+						</tbody>
+					</table>
+		</div>
+		
+		
+	</div>
+	<!-- /.container-fluid -->
+
+</div>
+<!-- /#page-wrapper -->
+
+<!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Student</h4>
+        </div>
+        <div class="modal-body">
+		<div ng-if="modelsteps == '2'">
+			<div class="row">
+			<div class="checkbox col-md-12">
+				<label>
+					Student has been added successfully.
+				</label>
+			</div>
+			</div>
+		</div>
+		<div ng-if="modelsteps != '2'">
+			<form class="form-horizontal" name="studentRegisterForm" role="form" ng-submit="submitForm(studentRegisterForm.$valid)" novalidate>	
+	 <div class="row">
+		<div class="form-group col-md-4">
+			<label for="firstName">First Name:</label>
+			<input type="text" class="form-control"  ng-model="r_userData.firstname" id="firstName" placeholder="First Name">
+		</div>
+	</div>
+	<div class="row">
+		<div class="form-group col-md-4">
+			<label for="lastName">Last Name:</label>
+			<input type="text" class="form-control"  ng-model="r_userData.lastname" id="lastName" placeholder="Last Name">
+		</div>
+	</div>		
+	<div class="row">
+		<div class="form-group col-md-4">
+			<label for="Email">Email Address:</label>
+			<input type="text" class="form-control"  ng-model="r_userData.email" id="Email" placeholder="Email">
+		</div>
+	</div>
+	<div class="row">
+		<div class="form-group col-md-4">
+			<label for="company">Company:</label>
+			<input type="text" class="form-control" ng-model="r_userData.company" id="company" placeholder="Company">
+		</div>
+	</div>
+	<div class="row">			
+		<div class="col-md-12">					
+			<div class="form-group col-md-4" style="padding-left: 0px;">
+				<label for="phoneType">Phone Type</label>
+				<select class="form-control" id="phoneType" ng-model="r_userData.phoneType">
+					<option>-Select Phone Type-</option>
+					<option>Home</option>
+					<option>Business</option>
+					<option>Mobile</option>
+				</select>
+			</div>
+			<div class="form-group col-md-4">
+				<label for="countryCode">Country Code</label>
+				<select class="form-control" id="countryCode" ng-model="r_userData.countryCode">
+					<option>-Select Country Code-</option>
+					<option>United States (+91)</option>
+					<option>India (+1)</option>
+				</select>
+			</div>
+			<div class="form-group col-md-4">
+				<label for="phoneNumber">Phone Number</label>
+				<input type="text" class="form-control" ng-model="r_userData.phone" id="phoneNumber" placeholder="Phone Number">
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="form-group col-md-4">
+			<label for="userName">User Name:</label>
+			<input type="text" class="form-control" ng-model="r_userData.userName" id="userName" placeholder="Username">
+		</div>
+	</div>
+	<div class="row">
+		<div class="form-group col-md-4">
+			<label for="userName">Password:</label>
+			<input type="password" class="form-control" ng-model="r_userData.password" id="password" placeholder="passoword">
+		</div>
+	</div>
+	<div class="row">
+		<div class="form-group col-md-4">
+			<label for="userName">Re-enter Password:</label>
+			<input type="password" class="form-control" ng-model="r_userData.confirmpassword" id="confirmpassword" placeholder="Confirm Password">
+		</div>
+	</div>
+	<div class="row">
+		<div class="checkbox col-md-12">
+			<label>
+				<input type="checkbox"> By checking this box you are giving your express written consent for University of Phoenix to contact you regarding our educational programs and services using telephone or text - including our use of automated technology for calls and periodic texts to any wireless number you provide. Message and data rates may apply. This consent is not required to purchase goods or services.
+			</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<br />
+			<button class="btn btn-primary">Submit</button>
+		</div>
+	</div>
+	</form>
+	
+		</div>
+			
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" ng-click="closeModal()" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>

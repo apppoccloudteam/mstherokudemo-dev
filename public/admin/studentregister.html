@@ -1,40 +1,22 @@
-	 <div class="row">
-		<div class="col-md-6">
-			<img src="images/logo.png" class="logo" />
-		</div>
-		<div class="col-md-6">
-			<strong class="pull-right" style="line-height:75px; font-size:25px;">Your application</strong>
-		</div>
-	 </div>
-	 <div class="page-header">
-		<h1>Create Account</h1>
-	 </div>
-	 <div class="well">			
-		<p>
-			Once you are registered you can save your application and come back at anytime. We will not sell your information.
-		</p>
-		<p><strong>If you already have an account, <a href="/login">sign in.</a></strong></p>
-	</div>
-	<form class="form-horizontal" name="studentRegisterForm" ng-init="getUserInfoDetails()" role="form" ng-submit="submitForm(studentRegisterForm.$valid)" novalidate>	
+<form class="form-horizontal" name="studentRegisterForm" role="form" ng-submit="submitForm(studentRegisterForm.$valid)" novalidate>	
 	 <div class="row">
 		<div class="form-group col-md-4">
 			<label for="firstName">First Name:</label>
-			<input type="text" class="form-control" readonly ng-model="r_userData.firstname" id="firstName" placeholder="First Name">
+			<input type="text" class="form-control"  ng-model="r_userData.firstname" id="firstName" placeholder="First Name">
 		</div>
 	</div>
 	<div class="row">
 		<div class="form-group col-md-4">
 			<label for="lastName">Last Name:</label>
-			<input type="text" class="form-control"  readonly ng-model="r_userData.lastname" id="lastName" placeholder="Last Name">
+			<input type="text" class="form-control"  ng-model="r_userData.lastname" id="lastName" placeholder="Last Name">
 		</div>
 	</div>		
 	<div class="row">
 		<div class="form-group col-md-4">
 			<label for="Email">Email Address:</label>
-			<input type="text" class="form-control" readonly ng-model="r_userData.email" id="Email" placeholder="Email">
+			<input type="text" class="form-control"  ng-model="r_userData.email" id="Email" placeholder="Email">
 		</div>
 	</div>
-
 	<div class="row">			
 		<div class="col-md-12">					
 			<div class="form-group col-md-4" style="padding-left: 0px;">
@@ -85,14 +67,11 @@
 			</label>
 		</div>
 	</div>
-	<div class="row">
-		<br />
-		<p class="col-md-12"><strong>I agree to the University of Phoenix <a href="">Privacy Policy</a> and <a href="">Terms of Use.</a><strong></p>
-	</div>
+	
 	<div class="row">
 		<div class="col-md-12">
 			<br />
-			<button class="btn btn-primary">Start Your Application</button>
+			<button class="btn btn-primary">Submit</button>
 		</div>
 	</div>
 	</form>

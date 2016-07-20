@@ -37,25 +37,42 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 			resolve : {
 				checkRouting: checkRouting
 			}			
+		})
+		
+		.when('/studentlist', {
+			templateUrl: 'admin/studentlist.html',
+			controller: 'StudentListController',
+			resolve : {
+				checkRouting: checkRouting
+			}			
+		})
+		
+		
+		
+		.when('/dashboard', {
+			templateUrl: 'admin/dashboard.html',
+			controller: 'DashboardController',
+			resolve : {
+				checkRouting: checkRouting
+			}			
 		});
 
 	$locationProvider.html5Mode(true);
 
 }]);
 
-checkRouting = function(){
-	var isStudentLogged = function($http,$location){
-		 var $body = angular.element(document.body);   
-		 var $rootScope = $body.scope().$root;  
+checkRouting = function($http,$location,$rootScope){
+	var isStudentLogged = function(){
 		if(typeof($rootScope.r_userData) != "undefined"){
 			 $rootScope.userloggedin = true;
 		}else{
-			/*$http.get('/api/v1/getauthentication').success(function(data) {
-			
+			$http.get('/api/v1/getuserinfo').success(function(data) {
+				 $rootScope.userloggedin = true
+				 $rootScope.r_userData = data;
 			})
 			.error(function(error) {
 				console.log('Error: ' + error);
-			});*/
+			});
 		}
 	}
 	isStudentLogged();

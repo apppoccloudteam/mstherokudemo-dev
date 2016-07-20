@@ -4,7 +4,6 @@ angular.module('myAccountCtrl', []).controller('MyAccountController', function($
 		 // Get all todos
 		$http.get('/api/v1/getuserinfo')
         .success(function(data) {
-			//alert("hi");
 		   $rootScope.r_userData = data;
            $scope.userInfo = data;
            console.log(data);
