@@ -5,6 +5,7 @@ angular.module('StudentListCtrl', []).controller('StudentListController', functi
 	$scope.showList = 'active';
 	$scope.successMsg = false;
 	$scope.dogetStudentList = function(){
+		   $scope.studentList = [];
 		   $scope.showList = 'active';
 		   $http.get('/api/v1/getstudentlist')
 			.success(function(data) {
@@ -33,7 +34,7 @@ angular.module('StudentListCtrl', []).controller('StudentListController', functi
 		var config = {params: s_data};
 		$http.get('/api/v1/updatestudent',config)
 			.success(function(data) {
-			   $scope.successMsg = 'student has been activated successfully. you can see the updates in active list';
+			   $scope.successMsg = 'student has been activated successfully. You can see the updates in active list';
 			   $scope.doGetpendingList();
 			})
 			.error(function(error) {
@@ -43,11 +44,13 @@ angular.module('StudentListCtrl', []).controller('StudentListController', functi
 	}
 	
 	$scope.doGetpendingList = function(){
+		$scope.studentList = [];
 		$scope.modelsteps = '1';
 		$scope.showList = 'pending';
 		$http.get('/api/v1/getstudentpendinglist')
 		.success(function(data) {
 		   $scope.studentList = data;
+		   console.log(data);
 		})
 		.error(function(error) {
 			console.log('Error: ' + error);

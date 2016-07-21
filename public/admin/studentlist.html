@@ -37,39 +37,57 @@
 			</div>
 		</div> <br />
 		
-		<div class="table-responsive" ng-if="studentList.length > 1">
-					<table class="table table-bordered table-hover table-striped">
-						<thead>
-							<tr>
-								<th>ID</th>
-								<th>First Name</th>
-								<th>Last Name</th>
-								<th>Company Name</th>
-								<th>Email</th>
-								<th>Phone</th>
-								<th ng-if="showList == 'active' ">SFID</th>
-								<th>Status</th>
-								<th ng-if="showList == 'pending'" class="text-center">Sync</th>
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title" ng-if="showList == 'active'"><i class="fa fa-table"></i> Student Lists - Active </h3>
+						<h3 class="panel-title" ng-if="showList == 'pending'"><i class="fa fa-table"></i> Student Lists - Pending </h3>
+					</div>
+					<div class="panel-body">
+							<div class="table-responsive" ng-if="studentList.length > 0">
+								<table class="table table-bordered table-hover table-striped">
+									<thead>
+										<tr>
+											<th>ID</th>
+											<th>First Name</th>
+											<th>Last Name</th>
+											<th>Company Name</th>
+											<th>Email</th>
+											<th>Phone</th>
+											<th ng-if="showList == 'active' ">SFID</th>
+											<th>Status</th>
+											<th ng-if="showList == 'pending'" class="text-center">Sync</th>
 
-							</tr>
-						</thead>
-						<tbody>
-							<tr  class="$index % 2 == 0? 'active' : 'success'" ng-repeat="student in studentList">
-								 <td>{{student.user_id}}</td>
-								 <td>{{student.firstname}}</td>
-								 <td>{{student.lastname}}</td>
-								 <td>{{student.company}}</td>
-								 <td>{{student.email}}</td>
-								 <td>{{student.phone}}</td>
-								 <td  ng-if="showList == 'active' ">{{student.sfid}}</td>
-								 <td ng-if="student.is_active == '1' ">Active</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr  class="$index % 2 == 0? 'active' : 'success'" ng-repeat="student in studentList">
+											 <td>{{student.user_id}}</td>
+											 <td>{{student.firstname}}</td>
+											 <td>{{student.lastname}}</td>
+											 <td>{{student.company}}</td>
+											 <td>{{student.email}}</td>
+											 <td>{{student.phone}}</td>
+											 <td  ng-if="showList == 'active' ">{{student.sfid}}</td>
+											 <td ng-if="student.is_active == '1' ">Active</td>
 
-								 <td ng-if="student.is_active == '0' ">Pending</td>
-								 <td ng-if="student.is_active == '0' " align="center">  <span style="cursor:pointer;color:#337ab7" ng-click="updateStudentInfo(student.lead_id)" class="glyphicon glyphicon-refresh"></span></td>
-							</tr>
-						</tbody>
-					</table>
+											 <td ng-if="student.is_active == '0' ">Pending</td>
+											 <td ng-if="student.is_active == '0' " align="center">  <span style="cursor:pointer;color:#337ab7" ng-click="updateStudentInfo(student.lead_id)" class="glyphicon glyphicon-refresh"></span></td>
+										</tr>
+									</tbody>
+								</table>
+						</div>
+						<div class="table-responsive" ng-if="studentList.length == 0">
+							<div class="alert alert-error" style="color:#ff0000">  
+								No students found.
+							</div> 
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
+		
 		
 		
 	</div>
