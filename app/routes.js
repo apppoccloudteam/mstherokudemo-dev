@@ -220,8 +220,8 @@ module.exports = function(app) {
 			studentInfo.name = studentInfo.firstname + ' ' + studentInfo.lastname;
 			
 			// SQL Query > Select Data
-			var queryText = 'INSERT INTO salesforce.lead(phone, firstname, company, name, lastname, email) VALUES($1,$2,$3,$4,$5,$6) RETURNING id';
-			var query = client.query(queryText, [studentInfo.phone, studentInfo.firstname, studentInfo.company, studentInfo.name,studentInfo.lastname,studentInfo.email], function(err, result) {
+			var queryText = 'INSERT INTO salesforce.lead(phone, firstname, company, name, lastname, email,isadmin__c) VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING id';
+			var query = client.query(queryText, [studentInfo.phone, studentInfo.firstname, studentInfo.company, studentInfo.name,studentInfo.lastname,studentInfo.email,1], function(err, result) {
 			 if(err) {done();
 			  console.log(err);}
 			  else {
